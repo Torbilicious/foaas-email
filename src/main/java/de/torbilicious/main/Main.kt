@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
     val operationsString = get("$baseUrl/operations", headers).text
 
     val gson = Gson()
-    val operations = gson.fromJson(operationsString, Array<Operation>::class.java)
+    val operations = gson.fromJson(operationsString, Operations::class.java)
 
     val supportedOperations = operations.filter {
         it.fields.all {
@@ -38,15 +38,15 @@ fun getRandomOperation(operations: List<Operation>): Operation {
 }
 
 fun insertValues(url: String): String {
-
     var urlWithValues = url
 
-    for((key, value) in validInserts) {
+    for ((key, value) in validInserts) {
         urlWithValues = urlWithValues.replace(":$key", value)
     }
 
     return urlWithValues
 }
 
+typealias Operations = Array<Operation>
 data class Operation(val name: String, val url: String, val fields: Array<Field>)
 data class Field(val name: String, val field: String)
