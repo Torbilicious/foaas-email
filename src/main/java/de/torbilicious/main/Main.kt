@@ -6,9 +6,12 @@ import khttp.get
 
 val baseUrl = "https://www.foaas.com"
 val headers = mapOf("Accept" to "text/plain")
-val validInserts = mapOf("from" to "Me",
+val validInserts = mapOf(
+        "from" to "Me",
         "company" to "SomeCompany",
-        "name" to "You")
+        "name" to "You",
+        "reference" to "Abraham Lincoln"
+)
 
 fun main(args: Array<String>) {
     val operationsString = get("$baseUrl/operations", headers).text
@@ -27,7 +30,7 @@ fun main(args: Array<String>) {
 
     println("Insult: \n$insult")
 
-    sendMail(insult)
+//    sendMail(insult)
 }
 
 fun getRandomOperation(operations: List<Operation>): Operation {
