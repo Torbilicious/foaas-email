@@ -28,7 +28,8 @@ fun sendMail(body: String) {
             override fun getPasswordAuthentication(): PasswordAuthentication {
                 return PasswordAuthentication(username, password)
             }
-        })
+        }
+    )
 
 
     try {
