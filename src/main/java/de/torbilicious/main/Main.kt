@@ -30,7 +30,7 @@ fun main(args: Array<String>) {
 
     println("Insult: \n$insult")
 
-//    sendMail(insult)
+    sendMail(insult)
 }
 
 fun getRandomOperation(operations: List<Operation>): Operation {

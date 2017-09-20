@@ -14,7 +14,7 @@ val password: String? = System.getenv("PASSWORD")
 val receiver: String? = System.getenv("RECEIVER")
 val sender = username
 
-fun sendMail(body: String) {
+fun sendMail(body: String, subject: String = "Wichtige Abrechnung - Bestimmt kein Virus") {
 
     val props = Properties()
     props.put("mail.smtp.host", "smtp.gmail.com")
@@ -38,7 +38,7 @@ fun sendMail(body: String) {
         message.setFrom(InternetAddress(sender))
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver))
 
-        message.subject = "Wichtige Abrechnung - Bestimmt kein Virus"
+        message.subject = subject
         message.setText(body)
 
         Transport.send(message)
